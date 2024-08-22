@@ -62,7 +62,12 @@ int dotNumber(const char *str, char ch){
 
 char* getIp(char* ip){
     ip=malloc(255*sizeof(char*));
+    ask:
     printf("Enter an IPv4 adress:");
     scanf("%s",ip);
+    for(int i=0 ; i<strlen(ip) ; i++){
+        if(ip[i]!='.'&&strchr("0123456789",ip[i])==NULL)
+            goto ask;
+    }
     return(ip);
 }
